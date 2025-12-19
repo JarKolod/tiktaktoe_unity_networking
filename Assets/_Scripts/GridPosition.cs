@@ -10,6 +10,6 @@ public class GridPosition : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Grid position clicked: x: " + x + ", y: " + y);
-        GameManager.Instance.ClickedOnGridPos(x, y);
+        GameManager.Instance.ClickedOnGridPosRpc(x, y, GameManager.Instance.GetLocalPlayerType());
     }
 }
