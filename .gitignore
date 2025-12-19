@@ -33,6 +33,9 @@
 
 # Visual Studio cache directory
 .vs/
+.idea/
+.vscode/
+.vsconfig
 
 # Gradle cache directory
 .gradle/
@@ -54,6 +57,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.slnx
 
 # Unity3D generated meta files
 *.pidb.meta

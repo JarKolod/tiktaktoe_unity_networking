@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d777d270cee3a5c419cb21a828556f1a, type: 3}
+  m_Name: CodeMonkeyFreeSO
+  m_EditorClassIdentifier: 
+  currentVersion: 1.00
+  subtype: tictactoengofree
+  lastShownTimestamp: 1766081712
+  lastUpdateResponse:
+    version: 1.00
+    versionUrl: https://unitycodemonkey.com
+  checkedLastUpdateTimestamp: 1766081712
+  lastQOTDResponse:
+    questionId: 253
+    questionText: Which of these are affected when you modify Time.timeScale?
+    answerA: Time.deltaTime, Time.realtimeSinceStartup, Time.unscaledDeltaTime, Time.timeSinceLevelLoad,
+      Time.fixedTime
+    answerB: Time.deltaTime, Time.realtimeSinceStartup, Time.timeSinceLevelLoad,
+      Time.fixedTime
+    answerC: Time.deltaTime, Time.timeSinceLevelLoad, Time.fixedTime
+    answerD: 
+    answerE: 
+  lastQotdTimestamp: 1766081712
+  lastDynamicHeaderResponse:
+    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/problemSolvingCourse_BonusesEndingMonth.png
+    topText: The Special Bonuses on my Problem Solving course are ending this month!
+    topLink: problemsolvingcourse
+    bottomText: My 10+ Years of C# Knowledge in 1 Course!
+    bottomLink: csharpcourse
+  lastDynamicHeaderTimestamp: 1766081712
+  websiteLatestMessage:
+    text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
+      Click here!</a>
+  websiteLatestMessageTimestamp: 1766081712
+  websiteLatestVideos:
+    videos:
+    - youTubeId: 4n0flLF7FB0
+      title: THIS is the #1 Game Marketing RULE!
+    - youTubeId: CGQovJjijwE
+      title: FREE DOWNLOAD 56 Project Files!
+    - youTubeId: OwxThbyAmOw
+      title: TOP 10 FREE NEW Assets DECEMBER 2025!
+    - youTubeId: EB0WQA6qjbI
+      title: Unity 6.3 LTS is RELEASED! (This is the one you should use!)
+  websiteLatestVideosTimestamp: 1766081712
