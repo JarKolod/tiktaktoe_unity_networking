@@ -14,41 +14,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.00
   subtype: tictactoengofree
-  lastShownTimestamp: 1766081712
+  lastShownTimestamp: 1766418378
   lastUpdateResponse:
     version: 1.00
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1766081712
+  checkedLastUpdateTimestamp: 1766418378
   lastQOTDResponse:
-    questionId: 253
-    questionText: Which of these are affected when you modify Time.timeScale?
-    answerA: Time.deltaTime, Time.realtimeSinceStartup, Time.unscaledDeltaTime, Time.timeSinceLevelLoad,
-      Time.fixedTime
-    answerB: Time.deltaTime, Time.realtimeSinceStartup, Time.timeSinceLevelLoad,
-      Time.fixedTime
-    answerC: Time.deltaTime, Time.timeSinceLevelLoad, Time.fixedTime
+    questionId: 254
+    questionText: 'Is there a problem with this code?
+
+      <p>private void SetCameraFollowFunc(Func&lt;Vector3&gt;
+      cameraFollowFunc) { }</p>
+
+      <p>SetCameraFollowFunc(() =&gt; new Vector3(1,
+      0, 0));</p>'
+    answerA: No
+    answerB: 'Should be: SetCameraFollowFunc(() =&#62; return new Vector3(1, 0, 0));'
+    answerC: 'Should be: SetCameraFollowFunc((Vector3(1, 0, 0)) =&#62; { });'
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1766081712
+  lastQotdTimestamp: 1766418378
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/problemSolvingCourse_BonusesEndingMonth.png
     topText: The Special Bonuses on my Problem Solving course are ending this month!
     topLink: problemsolvingcourse
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1766081712
+  lastDynamicHeaderTimestamp: 1766418378
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1766081712
+  websiteLatestMessageTimestamp: 1766418378
   websiteLatestVideos:
     videos:
+    - youTubeId: f_zWWVFKwho
+      title: TOP 10 NEW Systems and Tools DECEMBER 2025! | Unity Asset Store
     - youTubeId: 4n0flLF7FB0
       title: THIS is the #1 Game Marketing RULE!
     - youTubeId: CGQovJjijwE
       title: FREE DOWNLOAD 56 Project Files!
     - youTubeId: OwxThbyAmOw
       title: TOP 10 FREE NEW Assets DECEMBER 2025!
-    - youTubeId: EB0WQA6qjbI
-      title: Unity 6.3 LTS is RELEASED! (This is the one you should use!)
-  websiteLatestVideosTimestamp: 1766081712
+  websiteLatestVideosTimestamp: 1766418378
