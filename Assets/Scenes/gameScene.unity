@@ -128,8 +128,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 132365816}
-  - component: {fileID: 132365815}
   - component: {fileID: 132365817}
+  - component: {fileID: 132365815}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1340,6 +1340,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   crossPrefab: {fileID: 1999890677363996052, guid: 0616d12b3c5e2194ebf47c343801a606, type: 3}
   circlePrefab: {fileID: 1999890677363996052, guid: 43b0323c0e230494fbaf7ac277d4a0ad, type: 3}
+  lineWinnerPrefab: {fileID: 1723694008638903431, guid: ad8342dd221134e429c9580ba1db67cd, type: 3}
 --- !u!4 &625555671
 Transform:
   m_ObjectHideFlags: 0
