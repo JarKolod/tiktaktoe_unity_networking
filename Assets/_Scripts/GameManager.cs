@@ -49,6 +49,7 @@ public class GameManager : NetworkBehaviour
     public event EventHandler OnCurrentPlayablePlayerTypeChange;
     public event EventHandler OnRemtach;
     public event EventHandler OnGameTie;
+    public event EventHandler OnScoreChange;
 
 
     private PlayerType localPlayerType;
@@ -58,6 +59,9 @@ public class GameManager : NetworkBehaviour
         NetworkVariableWritePermission.Server); // default parameters
     private PlayerType[,] playerTypeArray;
     private List<Line> Lines;
+
+    private NetworkVariable<short> crossPlayerScore = new(0);
+    private NetworkVariable<short> circlePlayerScore = new(0);
 
     private void Awake()
     {
@@ -124,6 +128,7 @@ public class GameManager : NetworkBehaviour
         };
     }
 
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -146,6 +151,16 @@ public class GameManager : NetworkBehaviour
         currentPlayer.OnValueChanged += (PlayerType oldPlayerType, PlayerType newPlayerType) => 
         {
             OnCurrentPlayablePlayerTypeChange?.Invoke(this, EventArgs.Empty);
+        };
+
+        crossPlayerScore.OnValueChanged += (short prevScore, short newScore) =>
+        {
+            OnScoreChange?.Invoke(this, EventArgs.Empty);
+        };
+
+        circlePlayerScore.OnValueChanged += (short prevScore, short newScore) =>
+        {
+            OnScoreChange?.Invoke(this, EventArgs.Empty);
         };
     }
 
@@ -221,7 +236,22 @@ public class GameManager : NetworkBehaviour
             if(TestWinnerLine(line))
             {
                 currentPlayer.Value = PlayerType.None;
+                switch(playerTypeArray[line.centerGridPos.x, line.centerGridPos.y])
+                {
+                    case PlayerType.Cross:
+                    {
+                        crossPlayerScore.Value += 1;
+                        break;
+                    }
+                    case PlayerType.Circle:
+                    {
+                        circlePlayerScore.Value += 1;
+                        break;
+                    }
+                }
+
                 TriggerOnGameWinRpc(i, playerTypeArray[line.centerGridPos.x, line.centerGridPos.y]);
+
                 return;
             }
         }
@@ -283,5 +313,12 @@ public class GameManager : NetworkBehaviour
     public PlayerType GetCurrentPlayerType()
     {
         return currentPlayer.Value;
+    }
+
+    public void GetScores(out int crossScore, out int circleScore)
+    {
+        print("cross: " + crossPlayerScore.Value + ", circle: " + circlePlayerScore.Value);
+        crossScore = crossPlayerScore.Value;
+        circleScore = circlePlayerScore.Value;
     }
 }
