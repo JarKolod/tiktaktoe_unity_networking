@@ -70,13 +70,13 @@ public class GameManager : NetworkBehaviour
             // Horizontal
             new Line
             {
-                gridList = new List<Vector2Int>{new Vector2Int(0, 0), new Vector2Int(1, 0), new Vector2Int(1, 0) },
+                gridList = new List<Vector2Int>{new Vector2Int(0, 0), new Vector2Int(1, 0), new Vector2Int(2, 0) },
                 centerGridPos = new Vector2Int(1, 0),
                 orientation = Orientation.Horizontal
             },
             new Line
             {
-                gridList = new List<Vector2Int>{new Vector2Int(0, 1), new Vector2Int(1, 1), new Vector2Int(1, 1) },
+                gridList = new List<Vector2Int>{new Vector2Int(0, 1), new Vector2Int(1, 1), new Vector2Int(2, 1) },
                 centerGridPos = new Vector2Int(1, 1),
                 orientation = Orientation.Horizontal
             },
@@ -101,7 +101,7 @@ public class GameManager : NetworkBehaviour
             },
             new Line
             {
-                gridList = new List<Vector2Int>{new Vector2Int(2, 0), new Vector2Int(1, 1), new Vector2Int(2, 2) },
+                gridList = new List<Vector2Int>{new Vector2Int(2, 0), new Vector2Int(2, 1), new Vector2Int(2, 2) },
                 centerGridPos = new Vector2Int(2, 1),
                 orientation = Orientation.Vertical
             },
