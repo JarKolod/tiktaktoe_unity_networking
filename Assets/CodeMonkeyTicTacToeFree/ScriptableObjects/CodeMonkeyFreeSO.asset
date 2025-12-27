@@ -14,45 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.00
   subtype: tictactoengofree
-  lastShownTimestamp: 1766418378
+  lastShownTimestamp: 1766850840
   lastUpdateResponse:
     version: 1.00
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1766418378
+  checkedLastUpdateTimestamp: 1766850840
   lastQOTDResponse:
-    questionId: 254
-    questionText: 'Is there a problem with this code?
-
-      <p>private void SetCameraFollowFunc(Func&lt;Vector3&gt;
-      cameraFollowFunc) { }</p>
-
-      <p>SetCameraFollowFunc(() =&gt; new Vector3(1,
-      0, 0));</p>'
-    answerA: No
-    answerB: 'Should be: SetCameraFollowFunc(() =&#62; return new Vector3(1, 0, 0));'
-    answerC: 'Should be: SetCameraFollowFunc((Vector3(1, 0, 0)) =&#62; { });'
+    questionId: 256
+    questionText: The Profiler is useful for...
+    answerA: Balancing difficulty
+    answerB: Level Design
+    answerC: Indentifying performance bottlenecks
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1766418378
+  lastQotdTimestamp: 1766850840
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/problemSolvingCourse_BonusesEndingMonth.png
     topText: The Special Bonuses on my Problem Solving course are ending this month!
     topLink: problemsolvingcourse
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1766418378
+  lastDynamicHeaderTimestamp: 1766850840
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1766418378
+  websiteLatestMessageTimestamp: 1766850840
   websiteLatestVideos:
     videos:
+    - youTubeId: rtwwNG7Jwwc
+      title: Get Ready for 2026 with FREE Technical Unity ebooks and samples!
+    - youTubeId: Q7NFzES5GMU
+      title: How to Convert Input Manager to Input System (Unity 6.3 LTS)
+    - youTubeId: zk3vMm0dJ_M
+      title: Useless IMPORTANT Game Features (for some players)
     - youTubeId: f_zWWVFKwho
       title: TOP 10 NEW Systems and Tools DECEMBER 2025! | Unity Asset Store
-    - youTubeId: 4n0flLF7FB0
-      title: THIS is the #1 Game Marketing RULE!
-    - youTubeId: CGQovJjijwE
-      title: FREE DOWNLOAD 56 Project Files!
-    - youTubeId: OwxThbyAmOw
-      title: TOP 10 FREE NEW Assets DECEMBER 2025!
-  websiteLatestVideosTimestamp: 1766418378
+  websiteLatestVideosTimestamp: 1766850840

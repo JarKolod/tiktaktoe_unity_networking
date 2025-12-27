@@ -39,6 +39,7 @@ public class GameManager : NetworkBehaviour
     public class OnGameWinEventArgs : EventArgs
     {
         public Line line;
+        public PlayerType winPlayerType;
     }
 
 
@@ -53,7 +54,7 @@ public class GameManager : NetworkBehaviour
         PlayerType.None, 
         NetworkVariableReadPermission.Everyone, 
         NetworkVariableWritePermission.Server); // default parameters
-    private PlayerType[,] playerTypeArray = new PlayerType[3,3];
+    private PlayerType[,] playerTypeArray;
     private List<Line> Lines;
 
     private void Awake()
@@ -200,6 +201,7 @@ public class GameManager : NetworkBehaviour
     {
         return a != PlayerType.None && a == b && b == c;
     }
+
     private bool TestWinnerLine(Line line)
     {
         return TestWinnerLineABC(
@@ -211,18 +213,26 @@ public class GameManager : NetworkBehaviour
 
     private void TestWinner()
     {
-        foreach(Line line in Lines)
+        for(short i = 0; i < Lines.Count; i++)
         {
+            Line line = Lines[i];
             if(TestWinnerLine(line))
             {
                 currentPlayer.Value = PlayerType.None;
-                OnGameWin?.Invoke(this, new OnGameWinEventArgs
-                {
-                    line = line
-                });
+                TriggerOnGameWinRpc(i, playerTypeArray[line.centerGridPos.x, line.centerGridPos.y]);
                 break;
             }
         }
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    private void TriggerOnGameWinRpc(int lineIndex, PlayerType playerType)
+    {
+        OnGameWin?.Invoke(this, new OnGameWinEventArgs
+        {
+            line = Lines[lineIndex],
+            winPlayerType = playerType
+        });
     }
 
     public PlayerType GetLocalPlayerType()
