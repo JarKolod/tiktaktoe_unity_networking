@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,10 +12,32 @@ public class GameVisualManager : NetworkBehaviour
     [SerializeField] private Transform circlePrefab;
     [SerializeField] private Transform lineWinnerPrefab;
 
+    private List<GameObject> visualGameObjectList;
+
+    private void Awake()
+    {
+        visualGameObjectList = new();
+    }
+
     private void Start()
     {
         GameManager.Instance.OnClickedOnGridPosition += GameManager_OnClickedOnGridPosition;
         GameManager.Instance.OnGameWin += GameManager_OnGameWin;
+        GameManager.Instance.OnRemtach += GameManager_OnRemtach;
+    }
+
+    private void GameManager_OnRemtach(object sender, EventArgs e)
+    {
+        if(!NetworkManager.Singleton.IsServer)
+        {
+            return;
+        }
+
+        foreach(GameObject visualObj in visualGameObjectList)
+        {
+            Destroy(visualObj); 
+        }
+        visualGameObjectList.Clear();
     }
 
     private void GameManager_OnGameWin(object sender, GameManager.OnGameWinEventArgs e)
@@ -38,6 +61,8 @@ public class GameVisualManager : NetworkBehaviour
             Quaternion.Euler(0, 0, eulerZ)
             );
         lineWinnerTransform.GetComponent<NetworkObject>().Spawn(true);
+
+        visualGameObjectList.Add(lineWinnerTransform.gameObject);
     }
 
     private void GameManager_OnClickedOnGridPosition(object sender, GameManager.OnClickedOnGridPositionEventArgs e)
@@ -59,8 +84,9 @@ public class GameVisualManager : NetworkBehaviour
         };
 
         Transform spawnedCrossTrans = Instantiate(prefab, GetGridWorldPos(x, y), Quaternion.identity);
-        NetworkObject netObj = spawnedCrossTrans.GetComponent<NetworkObject>();
-        netObj.Spawn(true);
+        spawnedCrossTrans.GetComponent<NetworkObject>().Spawn(true);
+
+        visualGameObjectList.Add(spawnedCrossTrans.gameObject);
     }
 
     private Vector2 GetGridWorldPos(short x, short y)
