@@ -82,7 +82,7 @@ public class GameManager : NetworkBehaviour
             },
             new Line
             {
-                gridList = new List<Vector2Int>{new Vector2Int(0, 2), new Vector2Int(1, 2), new Vector2Int(1, 2) },
+                gridList = new List<Vector2Int>{new Vector2Int(0, 2), new Vector2Int(1, 2), new Vector2Int(2, 2) },
                 centerGridPos = new Vector2Int(1, 2),
                 orientation = Orientation.Horizontal
             },
