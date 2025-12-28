@@ -50,6 +50,7 @@ public class GameManager : NetworkBehaviour
     public event EventHandler OnRemtach;
     public event EventHandler OnGameTie;
     public event EventHandler OnScoreChange;
+    public event EventHandler OnObjPlaced;
 
 
     private PlayerType localPlayerType;
@@ -194,6 +195,7 @@ public class GameManager : NetworkBehaviour
             return;
         }
         playerTypeArray[x, y] = playerType;
+        TriggerOnObjPlacedRpc();
 
         OnClickedOnGridPosition?.Invoke(
             this,
@@ -212,6 +214,12 @@ public class GameManager : NetworkBehaviour
         };
 
         TestWinner();
+    }
+
+    [Rpc(SendTo.ClientsAndHost)]
+    private void TriggerOnObjPlacedRpc()
+    {
+        OnObjPlaced?.Invoke(this, EventArgs.Empty);
     }
 
     private bool TestWinnerLineABC(PlayerType a, PlayerType b, PlayerType c)
