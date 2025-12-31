@@ -4,12 +4,16 @@ using UnityEngine.UI;
 
 public class NetworkManagerUI : MonoBehaviour
 {
+    [SerializeField] private Image background;
     [SerializeField] private Button startHostBtn;
     [SerializeField] private Button startClientBtn;
     [SerializeField] private TMP_InputField joinCodeInputField;
+    [SerializeField] private TextMeshProUGUI joinCode;
 
     private void Awake()
     {
+        NetworkSessionManager.Instance.OnCodeGeneratedEvent += NetworkSessionManager_OnCodeGeneratedEvent;
+
         startHostBtn.onClick.AddListener(() =>
         {
             // Use session manager to create a Relay-backed session before starting the host
@@ -42,8 +46,16 @@ public class NetworkManagerUI : MonoBehaviour
         });
     }
 
+    private void NetworkSessionManager_OnCodeGeneratedEvent(object sender, NetworkSessionManager.OnCodeGeneratedEventArgs e)
+    {
+        joinCode.SetText(e.code);
+    }
+
     private void Hide()
     {
-        gameObject.SetActive(false);
+        startHostBtn.gameObject.SetActive(false);
+        startClientBtn.gameObject.SetActive(false);
+        joinCodeInputField.gameObject.SetActive(false);
+        background.gameObject.SetActive(false);
     }
 }

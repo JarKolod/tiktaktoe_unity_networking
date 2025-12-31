@@ -1,17 +1,24 @@
+using Cysharp.Threading.Tasks;
+using System;
+using System.Collections.Generic;
 using Unity.Netcode;
-using Unity.Services.Core;
 using Unity.Services.Authentication;
+using Unity.Services.Core;
 using Unity.Services.Multiplayer;
 using UnityEngine;
 using UnityUtils;
-using System.Collections.Generic;
-using System;
-using Cysharp.Threading.Tasks;
+using static GameManager;
 
 
 public class NetworkSessionManager : Singleton<NetworkSessionManager>
 {
     ISession activeSession;
+
+    public event EventHandler<OnCodeGeneratedEventArgs> OnCodeGeneratedEvent;
+    public class OnCodeGeneratedEventArgs : EventArgs
+    {
+        public string code;
+    }
 
     const string playerNamePropertKey = "playerName";
 
@@ -34,12 +41,12 @@ public class NetworkSessionManager : Singleton<NetworkSessionManager>
         {
             await UnityServices.InitializeAsync(); // Init Unity Gaming Services (UGS) SDKs
             if (!AuthenticationService.Instance.IsSignedIn)
-            { 
+            {
                 await AuthenticationService.Instance.SignInAnonymouslyAsync(); // Annonymusly authenticate palyer
             }
             Debug.Log($"Sign in anonymously succeded. PlayerID: {AuthenticationService.Instance.PlayerId}");
         }
-        catch(System.Exception e)
+        catch (System.Exception e)
         {
             Debug.LogException(e);
         }
@@ -81,6 +88,11 @@ public class NetworkSessionManager : Singleton<NetworkSessionManager>
             ActiveSession = await MultiplayerService.Instance.CreateSessionAsync(options);
             Debug.Log($"Session {ActiveSession.Id} created. Join code: {ActiveSession.Code}");
 
+            OnCodeGeneratedEvent?.Invoke(this, new OnCodeGeneratedEventArgs
+            {
+                code = ActiveSession.Code
+            });
+
             // MultiplayerService / NetworkModule will start the network/transport when using WithRelayNetwork().
             Debug.Log("Network startup is handled by MultiplayerService; no manual StartHost() required.");
         }
@@ -117,7 +129,7 @@ public class NetworkSessionManager : Singleton<NetworkSessionManager>
             // Network startup is handled by MultiplayerService when joining a session with relay.
             Debug.Log("Network startup is handled by MultiplayerService; no manual StartClient() required.");
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Debug.LogException(e);
         }
@@ -184,7 +196,7 @@ public class NetworkSessionManager : Singleton<NetworkSessionManager>
 
     async UniTaskVoid LeaveSession()
     {
-        if(ActiveSession != null)
+        if (ActiveSession != null)
         {
             try
             {
@@ -193,7 +205,7 @@ public class NetworkSessionManager : Singleton<NetworkSessionManager>
             catch
             {
                 // Ignore as we are leaving the game
-            } 
+            }
             finally
             {
                 ActiveSession = null;
